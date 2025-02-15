@@ -1,0 +1,37 @@
+<header class="navbar navbar-expand-lg navbar-light bg-light shadow-sm py-2">
+  <div class="container">
+    <!-- ✅ アプリ名 -->
+    <h1 class="navbar-brand mb-0 fw-bold">
+      <%= link_to "WakuwakuWorks", job_posts_path, class: "navbar-brand text-decoration-none px-2" %>
+    </h1>
+
+    <% if user_signed_in? %>
+      <div class="d-flex align-items-center">
+        <!-- ✅ ユーザー情報-->
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- ✅ max-width: 180px & 省略処理 -->
+            <span class="d-inline-block text-truncate" style="max-width: 180px;" title="<%= current_user.username %>">
+              <%= current_user.username %>
+            </span>
+          </button>
+
+          <!-- ✅ ドロップダウンメニュー -->
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><%= link_to "マイページ", user_path(current_user), class: "dropdown-item" %></li>
+            <li><%= link_to "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item text-danger" %></li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+        <!-- ✅ 未ログイン時のボタン -->
+        <div class="d-flex">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary me-2" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>

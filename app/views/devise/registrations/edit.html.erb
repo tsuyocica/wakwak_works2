@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <div class="card shadow-sm p-4">
+    <!-- ✅ 見出し -->
+    <h2 class="mb-4 text-center fw-bold text-uppercase text-secondary" style="font-size: 2rem; letter-spacing: 1px;">
+      ユーザー情報編集
+    </h2>
+
+    <!-- ✅ エラーメッセージ -->
+    <%= render "shared/error_messages", object: resource %>
+
+    <!-- ✅ 共通フォームを呼び出し -->
+    <%= render "devise/registrations/form", resource: resource, resource_name: resource_name %>
+  </div>
+</div>
