@@ -74,4 +74,3 @@ gem 'bootstrap', '~> 5.2.3'
 group :production do
   gem 'pg'
 end
-
