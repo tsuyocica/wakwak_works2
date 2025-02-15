@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :job_posts do # 作業員募集機能
-    resources :job_applications, only: [:create] # 応募処理は job_post にネスト
+    resources :job_applications, only: [:create, :destroy] # 応募処理は job_post にネスト
   end
 end
