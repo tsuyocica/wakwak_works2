@@ -67,8 +67,11 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "pry-rails"
+gem 'devise'
+gem 'bootstrap', '~> 5.2.3'
+
 group :production do
   gem 'pg'
 end
 
-gem 'devise'
