@@ -1,11 +1,31 @@
 Rails.application.routes.draw do
+  # mount ActionCable.server => '/cable' # ✅ WebSocketのエンドポイントを設定
+
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  root "users/sign_up"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # ユーザーの役割を切り替えるルート（施工管理者⇔作業員）
+  # patch "users/switch_role", to: "users#switch_role", as: "switch_role_users"
+
+  # resources :users, only: [:show, :edit, :update, :destroy]
+
+  # resources :job_posts do # 作業員募集機能
+  #   resources :job_applications, only: [:create, :destroy] do
+  #     member do
+  #       patch :approve  # 応募者を承認（非同期処理用）
+  #       patch :reject   # 応募者を却下（非同期処理用）
+  #       patch :update_status # 応募の状態を更新（非同期処理用）
+  #     end
+  #   end
+
+  #   member do
+  #     get :applicants  # 応募者一覧ページ（施工管理者用）
+  #   end
+  # end
+
+  # # **チャット機能のルート**
+  # resources :chats, only: [:index, :show, :create] do
+  #   resources :messages, only: [:create] # メッセージ送信
+  # end
 end
