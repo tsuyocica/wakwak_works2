@@ -14,8 +14,13 @@
     <!-- ヘッダーを読み込む -->
     <%= render "shared/header" %>
 
+    <!-- フラッシュメッセージ -->
+    <%= render "shared/flash_messages" %>
+
+    <!-- メインコンテンツ -->
     <div class="container mt-4">
       <%= yield %>
     </div>
+
   </body>
 </html>
