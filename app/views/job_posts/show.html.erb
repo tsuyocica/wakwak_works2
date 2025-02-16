@@ -5,6 +5,9 @@
       <%= @job_post.work_title %>
     </h1>
 
+    <!-- エラーメッセージの表示 -->
+    <%= render "shared/error_messages", object: @job_post %>
+
     <div class="row">
       <!-- 左カラム: 案件詳細 -->
       <div class="col-md-6">
