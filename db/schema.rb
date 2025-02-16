@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_15_080723) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_15_143331) do
+  create_table "job_applications", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "worker_id", null: false
+    t.bigint "job_post_id", null: false
+    t.string "status", default: "pending", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_post_id"], name: "index_job_applications_on_job_post_id"
+    t.index ["worker_id"], name: "index_job_applications_on_worker_id"
+  end
+
   create_table "job_posts", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "work_title", null: false
@@ -48,5 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_15_080723) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "job_applications", "job_posts"
+  add_foreign_key "job_applications", "users", column: "worker_id"
   add_foreign_key "job_posts", "users"
 end
