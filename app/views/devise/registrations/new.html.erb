@@ -6,7 +6,7 @@
     </h2>
 
     <!-- ✅ エラーメッセージ -->
-    <%# <%= render "shared/error_messages", object: resource %>
+    <%= render "shared/error_messages", object: resource %>
 
     <!-- ✅ 共通フォームを呼び出し -->
     <%= render "devise/registrations/form", resource: resource, resource_name: resource_name %>
